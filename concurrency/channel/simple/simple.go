@@ -22,3 +22,19 @@ func Consumer(chanOwner func(int) func() <-chan int, num int) {
 		println(i)
 	}
 }
+
+// NewChanOwner returns a function that returns a channel.
+func NewChanOwnerFunc(f func(interface{}) interface{}, arg interface{}, num int) func() <-chan interface{} {
+	ch := make(chan interface{}, num)
+	chanOwner := func() <-chan interface{} {
+
+		go func() {
+			defer close(ch)
+			for i := 0; i < num; i++ {
+				ch <- f(arg)
+			}
+		}()
+		return ch
+	}
+	return chanOwner
+}
