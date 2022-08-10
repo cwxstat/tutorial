@@ -16,3 +16,8 @@ func TestNewChanOwner(t *testing.T) {
 		expected++
 	}
 }
+
+func TestConsumer(t *testing.T) {
+
+	Consumer(NewChanOwner, 10)
+}

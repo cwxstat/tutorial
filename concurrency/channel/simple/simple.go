@@ -14,3 +14,11 @@ func NewChanOwner(num int) func() <-chan int {
 	}
 	return chanOwner
 }
+
+func Consumer(chanOwner func(int) func() <-chan int, num int) {
+	c := chanOwner(num)
+	resultStream := c()
+	for i := range resultStream {
+		println(i)
+	}
+}
