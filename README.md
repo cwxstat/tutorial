@@ -8,6 +8,6 @@ Documentation on how to do things in Go, with examples.
 ```bash
 Badge: https://pkg.go.dev/badge/
 
-git tag -a v0.0.4 -m "Documentation test"
+git tag -a v0.0.5 -m "Documentation test"
 
 ```
